@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Cocoon -Portfolio">
+    <meta name="keywords" content="Cocoon , Portfolio">
+    <meta name="author" content="Pharaohlab">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- ========== Title ========== -->
+    <title>圖片辨識 | Visual Recognition</title>
+    <!-- ========== Favicon Ico ========== -->
+    <link rel="icon" type="image/png" href="assets/img/user.png">
+    <!-- ========== STYLESHEETS ========== -->
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts Icon CSS -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/et-line.css" rel="stylesheet">
+    <link href="assets/css/ionicons.min.css" rel="stylesheet">
+    <!-- Carousel CSS -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Magnific-popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <style type="text/css">
+        #myProgress {
+          width: 85%;
+          margin-left: 10%;
+          background-color: #ddd;
+        }
+
+        #myBar1,#myBar2,#myBar3 {
+          width: 1%;
+          height: 30px;
+        }
+        #myBar1 {
+          background-color: #4298f4;
+        }
+        #myBar2{
+          background-color: #49b752;
+        }
+        #myBar3 {
+          background-color: #f4af41;
+        }
+    </style>
+</head>
+<body onload="score();">
+<div class="loader">
+    <div class="loader-outter"></div>
+    <div class="loader-inner"></div>
+</div>
+
+<div class="body-container container-fluid">
+    <a class="menu-btn" href="javascript:void(0)">
+        <i class="ion ion-grid"></i>
+    </a>
+    <div class="row justify-content-center">
+        <!--=================== side menu ====================-->
+        <div class="col-lg-2 col-md-3 col-12 menu_block">
+
+            <!--logo -->
+            <div class="logo_box">
+                <a href="#">
+                    <img src="assets/img/logo.png" alt="cocoon">
+                </a>
+            </div>
+            <!--logo end-->
+
+            <!--main menu -->
+            <div class="side_menu_section">
+                <ul class="menu_nav">
+                    <li>
+                        <a href="/">
+                            首頁
+                        </a>
+                    </li>
+                     <li class="active">
+                        <a href="index_recognize">
+                            圖片辨識
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index_compare">
+                            相似圖分析
+                        </a>
+                    </li>
+                    <li >
+                        <a href="index_challenge">
+                            年齡大挑戰
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="index_guess">
+                            年齡猜猜樂
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index_aboutus">
+                            關於我們
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--main menu end -->
+
+
+            <!--social and copyright -->
+            <div class="side_menu_bottom">
+                <div class="side_menu_bottom_inner">
+                    <div class="copy_right">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | NTUST Dep.IM</p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+            <!--social and copyright end -->
+
+        </div>
+        <!--=================== side menu end====================-->
+
+        <!--=================== content body ====================-->
+        <div class="col-lg-10 col-md-9 col-12 body_block  align-content-center">
+            <div>
+                <div class="img_card">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-7 content_section">
+                            <!--=================== contact info and form start====================-->
+                            <div class="content_box">
+                                <div class="content_box_inner">
+                                    <div>
+                                        <h3>
+                                            圖片辨識 Photo Recognition
+                                        </h3>
+                                        <table style="width: 100%;"><tr><td style="text-align: center;"><img id="myImg" src="<%= source %>" alt="The Pulpit Rock" width="200px"></td></tr></table>
+                                        <div style="font-size: 10pt; margin-top: 50px;" >
+                                            <p style="font-size: 16pt; font-weight: 300; text-decoration: underline; ">圖片要素辨識結果：</p>
+                                                <div>
+                                                    <span>(1) <%= best.class %></span>
+                                                    <table style="width:100%">
+                                                        <tr>
+                                                            <td style="width:80%">
+                                                                <div id="myProgress">
+                                                                  <div id="myBar1"></div> 
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span><%= new Number((best.score)*100).toFixed(2) %>%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <span>(2) <%= second.class %></span>
+                                                    <table style="width:100%">
+                                                        <tr>
+                                                            <td style="width:80%">
+                                                                <div id="myProgress">
+                                                                  <div id="myBar2"></div> 
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span><%= new Number((second.score)*100).toFixed(2) %>%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                                <% if(third == null){ %>
+                                                   
+                                                <% } else{ %>  
+                                                   <div>
+                                                        <span>(3) <%= third.class %></span>
+                                                        <table style="width:100%">
+                                                            <tr>
+                                                                <td style="width:80%">
+                                                                    <div id="myProgress">
+                                                                      <div id="myBar3"></div> 
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <span><%= new Number((third.score)*100).toFixed(2) %>%</span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                <% } %>
+                                                
+                                        </div>
+
+                                        <textarea style="width: 100%; height: 300px;  margin-top: 80px; border:0.2px solid #acacac; font-size: 9pt;resize: none;"><%= alljson %></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--=================== contact info and form end====================-->
+                        </div>
+                        <div class="col-md-6 col-5 img_section" style="background-image: url('assets/img/bg/recognize2.jpg');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--=================== content body end ====================-->
+    </div>
+</div>
+
+
+<!-- jquery -->
+<script src="assets/js/jquery.min.js"></script>
+<!-- bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<!--slick carousel -->
+<script src="assets/js/slick.min.js"></script>
+<!--Portfolio Filter-->
+<script src="assets/js/imgloaded.js"></script>
+<script src="assets/js/isotope.js"></script>
+<!-- Magnific-popup -->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<!--Counter-->
+<script src="assets/js/jquery.counterup.min.js"></script>
+<!-- WOW JS -->
+<script src="assets/js/wow.min.js"></script>
+<!-- Custom js -->
+<script src="assets/js/main.js"></script>
+
+<script>
+function score() {
+  var elem = document.getElementById("myBar1"); 
+  var elem2 = document.getElementById("myBar2"); 
+  var elem3 = document.getElementById("myBar3"); 
+  var score1 =  <%= new Number((best.score)*100).toFixed(2) %>;
+  var score2 =  <%= new Number((second.score)*100).toFixed(2) %>;
+  var score3 =  
+    <% if(third == null){ %>
+        0
+    <% } else{ %>  
+       <%= new Number((third.score)*100).toFixed(2) %>
+    <% } %> ;
+  var width = 1;
+  var width2 = 1;
+  var width3 = 1;
+  var id = setInterval(frame, 100);
+
+  function frame() {
+
+    if (width >= Math.max(score1, score2, score3)) {
+      clearInterval(id);
+    } else {
+      
+      if(width < score1 ){
+        width++; 
+        elem.style.width = width + '%'; 
+      }
+
+      if(width < score2 ){
+        width++; 
+        elem2.style.width = width + '%'; 
+      }
+
+      if(width < score3 ){
+        width++; 
+        elem3.style.width = width + '%'; 
+      }
+      
+    }
+  }
+
+}
+</script>
+
+</body>
+</html>

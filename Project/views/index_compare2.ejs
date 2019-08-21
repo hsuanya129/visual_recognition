@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Cocoon -Portfolio">
+    <meta name="keywords" content="Cocoon , Portfolio">
+    <meta name="author" content="Pharaohlab">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- ========== Title ========== -->
+    <title>相似圖分析 | Visual Recognition</title>
+    <!-- ========== Favicon Ico ========== -->
+    <link rel="icon" type="image/png" href="assets/img/user.png">
+    <!-- ========== STYLESHEETS ========== -->
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts Icon CSS -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/et-line.css" rel="stylesheet">
+    <link href="assets/css/ionicons.min.css" rel="stylesheet">
+    <!-- Carousel CSS -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Magnific-popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="loader">
+    <div class="loader-outter"></div>
+    <div class="loader-inner"></div>
+</div>
+
+<div class="body-container container-fluid">
+    <a class="menu-btn" href="javascript:void(0)">
+        <i class="ion ion-grid"></i>
+    </a>
+    <div class="row justify-content-center">
+        <!--=================== side menu ====================-->
+        <div class="col-lg-2 col-md-3 col-12 menu_block">
+
+            <!--logo -->
+            <div class="logo_box">
+                <a href="#">
+                    <img src="assets/img/logo.png" alt="cocoon">
+                </a>
+            </div>
+            <!--logo end-->
+
+            <!--main menu -->
+            <div class="side_menu_section">
+                <ul class="menu_nav">
+                    <li>
+                        <a href="/">
+                            首頁
+                        </a>
+                    </li>
+                     <li>
+                        <a href="index_recognize">
+                            圖片辨識
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="index_compare">
+                            相似圖分析
+                        </a>
+                    </li>
+                    <li >
+                        <a href="index_challenge">
+                            年齡大挑戰
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="index_guess">
+                            年齡猜猜樂
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index_aboutus">
+                            關於我們
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--main menu end -->
+
+
+            <!--social and copyright -->
+            <div class="side_menu_bottom">
+                <div class="side_menu_bottom_inner">
+                    <div class="copy_right">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | NTUST Dep.IM</p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+            <!--social and copyright end -->
+
+        </div>
+        <!--=================== side menu end====================-->
+
+        <!--=================== content body ====================-->
+        <div class="col-lg-10 col-md-9 col-12 body_block  align-content-center">
+            <div>
+                <div class="img_card">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-7 content_section">
+                            <!--=================== contact info and form start====================-->
+                            <div class="content_box">
+                                <div class="content_box_inner">
+                                    <div>
+                                        <h3>
+                                            相似圖分析 Similar Pictures
+                                        </h3>
+
+                                        <p>
+                                            <h4>Part. II</h4>請上傳要比較的第二張圖片
+                                        </p>
+
+                                        <form id="myForm" action="result_compare" method="post">
+                                            <div>
+                                                <!-- style="display:none;" -->
+                                                <textarea name="firstPic_text" style="display:none;" rows="3" cols="30"><%= pic1_text %></textarea>
+                                                <textarea name="firstPic_pic" style="display:none;" rows="2" cols="30"><%= pic1_source %></textarea>
+                                            </div>
+                                            <div class="mt75 row justify-content-center">
+                                                <div class="col-lg-6 col-12" style="font-size: 10pt; margin-bottom: 15px;">
+                                                    <input type="radio" id="radio-url" name="radiotype" value="url" checked="" onchange="radioChange();"> URL
+                                                </div>
+                                                <div class="col-lg-6 col-12" style="font-size: 10pt; margin-bottom: 15px;">
+                                                    <input type="radio" id="radio-file" name="radiotype" value="file"  onchange="radioChange();"> 上傳圖片
+                                                </div>
+
+                                                <div id="div_url" style="width:100%;">
+                                                    <div class="col-12">
+                                                        <input name="textURL" type="text" placeholder="請輸入網址 URL" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-12" style="margin-top: 50px;">
+                                                        <input class="btn" type="submit" value="年齡挑戰" />
+                                                    </div>
+                                                </div>
+                                                
+
+                                                <div id="div_file" class="col-12" style="display: none;">
+                                                    <label class="btn btn-info">
+                                                        <input id="upload_img" name="images_file" style="display:none;" type="file" onchange="selectFile();">
+                                                        <i class="fa fa-photo"></i> 上傳圖片
+                                                    </label>
+                                                </div>
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--=================== contact info and form end====================-->
+                        </div>
+                        <div class="col-md-6 col-5 img_section" style="background-image: url('assets/img/bg/compare2.png');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--=================== content body end ====================-->
+    </div>
+</div>
+
+
+<!-- jquery -->
+<script src="assets/js/jquery.min.js"></script>
+<!-- bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<!--slick carousel -->
+<script src="assets/js/slick.min.js"></script>
+<!--Portfolio Filter-->
+<script src="assets/js/imgloaded.js"></script>
+<script src="assets/js/isotope.js"></script>
+<!-- Magnific-popup -->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<!--Counter-->
+<script src="assets/js/jquery.counterup.min.js"></script>
+<!-- WOW JS -->
+<script src="assets/js/wow.min.js"></script>
+<!-- Custom js -->
+<script src="assets/js/main.js"></script>
+<script type="text/javascript">
+    function radioChange(){
+        if(document.getElementById("radio-url").checked == true){
+            document.getElementById("div_url").style.display = "";
+            document.getElementById("div_file").style.display = "none";
+            document.getElementById("myForm").enctype = "";
+        }else{
+            document.getElementById("div_url").style.display = "none";
+            document.getElementById("div_file").style.display = "";
+            document.getElementById("myForm").enctype = "multipart/form-data";
+        }
+    }
+
+    function selectFile(){
+        if(document.getElementById("upload_img").value !=""){
+            // var str = document.getElementById("upload_img").value.split("\\");
+            // document.getElementById("str_filename").value = str[str.length-1];
+            document.getElementById("myForm").submit()
+        }
+    }
+</script>
+
+</body>
+</html>

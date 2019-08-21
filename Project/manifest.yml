@@ -1,0 +1,9 @@
+applications:
+  - path: .
+    name: project-test
+    environment_json: {}
+    memory: 64M
+    instances: 1
+    disk_quota: 1024M
+    services: 
+      - watson-vision-combined-SWind

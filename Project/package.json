@@ -1,0 +1,23 @@
+{
+  "name": "project-test",
+  "version": "1.0.0",
+  "description": "application for personality insights service",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "SWind",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.0.0",
+    "multer": "^1.4.1",
+    "path": "^0.12.7",
+    "progress-stream": "^2.0.0",
+    "render": "^0.1.4",
+    "watson-developer-cloud": "^3.15.0"
+  }
+}

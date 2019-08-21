@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Cocoon -Portfolio">
+    <meta name="keywords" content="Cocoon , Portfolio">
+    <meta name="author" content="Pharaohlab">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- ========== Title ========== -->
+    <title>年齡猜猜樂 | Guess Age</title>
+    <!-- ========== Favicon Ico ========== -->
+    <link rel="icon" type="image/png" href="assets/img/user.png">
+    <!-- ========== STYLESHEETS ========== -->
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts Icon CSS -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/et-line.css" rel="stylesheet">
+    <link href="assets/css/ionicons.min.css" rel="stylesheet">
+    <!-- Carousel CSS -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Magnific-popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <style type="text/css">
+        .ageTitle{
+            font-size: 18pt;
+            font-weight: bolder;
+        }
+        #input{
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            outline:none;
+
+            width: 60px;
+            text-align: center;
+        }
+        #int_old{
+            font-weight: bold;
+            font-size: 60pt; 
+            color:red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+
+    <div class="body-container container-fluid">
+        <a class="menu-btn" href="javascript:void(0)">
+            <i class="ion ion-grid"></i>
+        </a>
+        <div class="row justify-content-center">
+            <!--=================== side menu ====================-->
+            <div class="col-lg-2 col-md-3 col-12 menu_block">
+
+                <!--logo -->
+                <div class="logo_box">
+                    <a href="#">
+                        <img src="assets/img/logo.png" alt="cocoon">
+                    </a>
+                </div>
+                <!--logo end-->
+
+                <!--main menu -->
+                <div class="side_menu_section">
+                    <ul class="menu_nav">
+                        <li>
+                            <a href="/">
+                                首頁
+                            </a>
+                        </li>
+                         <li>
+                            <a href="index_recognize">
+                                圖片辨識
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index_compare">
+                                相似圖分析
+                            </a>
+                        </li>
+                        <li >
+                            <a href="index_challenge">
+                                年齡大挑戰
+                            </a>
+                        </li> 
+                        <li class="active">
+                            <a href="index_guess">
+                                年齡猜猜樂
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index_aboutus">
+                                關於我們
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--main menu end -->
+
+
+                <!--social and copyright -->            
+                <div class="side_menu_bottom">
+                    <div class="side_menu_bottom_inner">
+                        <div class="copy_right">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | NTUST Dep.IM</p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+                    </div>
+                </div>
+                <!--social and copyright end -->
+
+            </div>
+            <!--=================== side menu end====================-->
+
+            <!--=================== content body ====================-->
+            <div class="col-lg-10 col-md-9 col-12 body_block  align-content-center">
+                <div>
+                    <div class="img_card">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-7 content_section">
+                                <!--=================== contact info and form start====================-->
+                                <div class="content_box">
+                                    <div class="content_box_inner">
+                                        <div>
+                                            <h3 id="t">
+                                                年齡猜猜樂 Guess Age
+                                            </h3>
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td style="text-align: center;"><img id="myImg" src="<%= source %>"
+                                                            alt="The Pulpit Rock" width="200px"></td>
+                                                </tr>
+                                            </table>
+
+                                            <div style="text-align: center; margin-top: 20px;">
+                                                <span style="color: #FF0000;font-size: 60pt; font-weight: 500;"></span>
+                                            </div>
+                                            <div style="text-align: center; margin-top: 20px;">
+                                                <p id="number" style="font-size: 15pt;color:#4c4c4c;">
+                                                    猜 
+                                                    <span id="range_min" style="font-weight: bold;font-size: 25pt; color:red;">1</span>
+                                                     ~ 
+                                                    <span id="range_max"  style="font-weight: bold;font-size: 25pt; color:red;">120</span> 
+                                                之間</p>
+                                                <input id="input" type="number" value="1" min="1" max="120"><span id="int_old" style="display: none;"></span> 歲
+                                                <a id="submit" class="btn" href="#t" onclick="guess();" style="margin-left: 30px;">猜猜看!</a>
+                                                <p id="answer" style="font-size: 45pt;color:#f48642; font-weight: bolder; "></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--=================== contact info and form end====================-->
+                            </div>
+                            <div class="col-md-6 col-5 img_section" style="background-image: url('assets/img/bg/guess2.jpg');">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--=================== content body end ====================-->
+        </div>
+    </div>
+
+
+    <!-- jquery -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <!--slick carousel -->
+    <script src="assets/js/slick.min.js"></script>
+    <!--Portfolio Filter-->
+    <script src="assets/js/imgloaded.js"></script>
+    <script src="assets/js/isotope.js"></script>
+    <!-- Magnific-popup -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!--Counter-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!-- WOW JS -->
+    <script src="assets/js/wow.min.js"></script>
+    <!-- Custom js -->
+    <script src="assets/js/main.js"></script>
+</body>
+<script>        
+    var answer = <%= Math.round((age.min + age.max) / 2) %>;
+    var min = 1;
+    var max = 120;
+    function guess() {
+        var input = document.getElementById("input").value;
+        parseInt(input);
+        if (input == answer) {
+            document.getElementById("input").style.display = "none";
+            document.getElementById("submit").style.display = "none";
+            document.getElementById("number").style.display = "none";
+            document.getElementById("int_old").style.display = "";
+            document.getElementById("answer").innerHTML = "答對了！！";
+            document.getElementById("int_old").innerHTML = answer;
+        } else if (input > answer && input < max) {
+            document.getElementById("answer").innerHTML = "低<span style='font-size:30pt; color:#5c5c5c;'>一點</span>";
+            max = input;
+            document.getElementById("range_max").innerHTML = max;
+            document.getElementById("range_min").innerHTML = min;
+        } else if (input < answer && input > min) {
+            document.getElementById("answer").innerHTML = "高<span style='font-size:30pt; color:#5c5c5c;'>一點</span>";
+            min = input;
+            document.getElementById("range_max").innerHTML = max;
+            document.getElementById("range_min").innerHTML = min;
+        } else {
+            document.getElementById("answer").innerHTML = "超出範圍了喔！";
+            document.getElementById("range_max").innerHTML = max;
+            document.getElementById("range_min").innerHTML = min;
+        }
+    }
+
+</script>
+</body>
+
+</html>
