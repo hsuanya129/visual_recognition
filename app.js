@@ -1,4 +1,4 @@
-var port = process.env.VCAP_APP_PORT || 5000;
+var port = process.env.PORT || 5000;
 
 //Express Web Framework, and create a new express server
 var express = require('express'),
